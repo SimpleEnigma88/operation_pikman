@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
 
-##Live Firebase Server
+## Live Firebase Server
 
 https://pikman-45f13.web.app/
 
