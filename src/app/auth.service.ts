@@ -151,7 +151,7 @@ export class AuthService {
     if (loadedUser.token) {
       console.log(loadedUser);
       this.user.next(loadedUser);
-      this.router.navigate(['/task-list']);
+      this.router.navigate(['/home']);
     }
 
   }
