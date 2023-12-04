@@ -1,0 +1,23 @@
+<div class="container" id="main-container" style="height: 100%">
+  <div class="row" id="header-container">
+    <h1 class="text-lg-center">Trivia -- Question #1</h1>
+    <hr>
+  </div>
+  <div class="row" style="height: 100%" id="play-area">
+    <div class="row" style="height: 40%" id="cover-and-trivia">
+      <span style="width: 25%; border: 1px solid black;"><img src="https://picsum.photos/225/300"
+            alt="Placeholder"></span>
+      <span style="width: 75%; border: 1px solid black;">
+        <div class="row" style="height: 100%; border: 1px solid black;">
+        <!-- <app-question></app-question> -->
+        </div>
+      </span>
+    </div>
+    <div class="row" id="results" style="border: 1px solid black; height: 200px;">
+      {{result}}
+    </div>
+    <div class="row" id="next-question" style="width: 100%;">
+      <button (click)="goToNextQuestion()" style="width: 175px; align-self: right;">Go To Next Question</button>
+    </div>
+  </div>
+</div>
