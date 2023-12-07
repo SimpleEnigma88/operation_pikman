@@ -10,15 +10,19 @@ import { EditQuestionsComponent } from './question-form/edit-questions/edit-ques
 import { PlayGameComponent } from './play-game/play-game.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
     PlayGameComponent,
     LandingPageComponent,
+    CreateQuestionFormComponent,
+    EditQuestionsComponent,
+    QuestionFormComponent,
+    MatTabQComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,10 +31,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     FormsModule,
-    MatTabQComponent,
-    QuestionFormComponent,
-    CreateQuestionFormComponent,
-    EditQuestionsComponent,
+    ReactiveFormsModule,
+    MatTabsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]

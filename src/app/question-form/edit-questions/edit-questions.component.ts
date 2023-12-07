@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-questions',
   templateUrl: './edit-questions.component.html',
   styleUrls: ['./edit-questions.component.css'],
-  standalone: true,
 })
 export class EditQuestionsComponent {
 
+  onFormSubmit(formObj: NgForm){
+    console.log('Submitted!', formObj.value);
+  }
+
+  constructor(){
+
+  }
 }
