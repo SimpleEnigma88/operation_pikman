@@ -13,12 +13,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayGameComponent,
     LandingPageComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
