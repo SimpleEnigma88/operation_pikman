@@ -1,13 +1,13 @@
 <div class="main-container d-flex flex-column justify-content-start" style="width: 100%; margin-top: 5px;">
 <h1>{{currentQuestion}}</h1>
-<form (submit)="submitAnswer()">
+<form #truefalseref="ngForm" (submit)="submitAnswer(truefalseref)">
   <div class="form-group">
     <label>Select correct answer</label>
-<input type="radio" id="true" name="answer" value="true" [(ngModel)]="answer">
+<input type="radio" id="true" name="answer" value="true" ngModel>
 <label for="true">True</label>
-<input type="radio" id="true" name="answer" value="false" [(ngModel)]="answer">
+<input type="radio" id="true" name="answer" value="false" ngModel>
 <label for="false">False</label>
   </div>
-  <button class="btn btn-primary">Submit answer</button>
+  <button class="btn btn-primary" type="submit">Submit answer</button>
 </form>
 </div>

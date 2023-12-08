@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { QuestionResultService } from '../question-result.service';
 
 @Component({
   selector: 'app-question',
@@ -9,15 +11,15 @@ import { FormsModule } from '@angular/forms';
 export class QuestionComponent {
 currentQuestion: string = "test";
 correctAnswer: string = "true";
-userIsRight: boolean = true;
 
+constructor(private questionResult: QuestionResultService) {}
 
-submitAnswer() {
-  if ("" == this.correctAnswer) {
-    return this.userIsRight;
+submitAnswer(FormObj: NgForm) {
+  console.log(FormObj.value.answer, this.correctAnswer);
+  if (FormObj.value.answer == this.correctAnswer) {
+    this.questionResult.answerReceived("Correct!!!");
   } else {
-    this.userIsRight = false;
-    return this.userIsRight;
+    this.questionResult.answerReceived("Wrong Answer!");
   }
 }
 }
