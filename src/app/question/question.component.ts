@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subject } from 'rxjs';
 import { QuestionResultService } from '../question-result.service';
 
 @Component({

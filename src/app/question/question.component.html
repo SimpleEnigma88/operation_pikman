@@ -3,10 +3,12 @@
 <form #truefalseref="ngForm" (submit)="submitAnswer(truefalseref)">
   <div class="form-group">
     <label>Select correct answer</label>
-<input type="radio" id="true" name="answer" value="true" ngModel>
-<label for="true">True</label>
-<input type="radio" id="true" name="answer" value="false" ngModel>
-<label for="false">False</label>
+    <br>
+<input class="form-check-input" type="radio" id="true" name="answer" value="true" ngModel>
+<label class="form-check-label" for="true">True</label>
+<br>
+<input class="form-check-input" type="radio" id="true" name="answer" value="false" ngModel>
+<label class="form-check-label" for="false">False</label>
   </div>
   <button class="btn btn-primary" type="submit">Submit answer</button>
 </form>
