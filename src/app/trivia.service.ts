@@ -15,7 +15,6 @@ export class TriviaService {
   questionList: any[] = [];
 
   constructor(
-    private authService: AuthService,
     private http: HttpClient,
     private snackBar: MatSnackBar
   ) { }
