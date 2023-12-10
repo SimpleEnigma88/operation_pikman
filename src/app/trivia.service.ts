@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TriviaService {
   dbURL = 'https://us-central1-pikman-45f13.cloudfunctions.net/pikmanTrivia';
-  TMDB_API_KEY = environment.TMDB_API_KEY;
+  private TMDB_API_KEY = environment.TMDB_API_KEY;
+  private tmdbUrl = 'https://api.themoviedb.org/3';
   questionListSub = new BehaviorSubject<any>(null);
   questionList: any[] = [];
 
@@ -107,4 +107,11 @@ export class TriviaService {
         }
       });;
   }
+
+  searchMovies(query: string): Observable<any> {
+    const url = `${this.tmdbUrl}/search/movie?api_key=${this.TMDB_API_KEY}&query=${encodeURIComponent(query)}`;
+    return this.http.get(url);
+  }
+
+
 }

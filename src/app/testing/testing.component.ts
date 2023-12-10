@@ -10,8 +10,12 @@ import { Observable } from 'rxjs';
 export class TestingComponent implements OnInit {
   questionList: any[] = [];
   questionList$: Observable<any[]>;
+  moviePosters: any[] = [];
+  movieQuery: string;
 
-  constructor(private triviaService: TriviaService) { }
+  constructor(private triviaService: TriviaService) {
+
+  }
 
   ngOnInit() {
     this.triviaService.getQuestions();
@@ -19,6 +23,12 @@ export class TestingComponent implements OnInit {
       this.questionList = questionList;
     });
     this.questionList$ = this.triviaService.questionListSub.asObservable();
+  }
+
+  getMoviePosters(query: string) {
+    this.triviaService.searchMovies(query).subscribe((response) => {
+      this.moviePosters = response.results;
+    });
   }
 
   addQuestion() {
@@ -42,4 +52,6 @@ export class TestingComponent implements OnInit {
       console.log('No questions available to delete');
     }
   }
+
+
 }
