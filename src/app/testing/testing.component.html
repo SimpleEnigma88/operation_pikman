@@ -1,0 +1,8 @@
+<button (click)="addQuestion()">Add Question</button>
+<button (click)="updateQuestion()">Update Question</button>
+<button (click)="deleteQuestion()">Delete Question</button>
+
+<div *ngFor="let question of questionList$ | async">
+  <p>{{ question.question }}</p>
+  <p>{{ question.answer }}</p>
+</div>

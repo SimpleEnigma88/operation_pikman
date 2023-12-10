@@ -26,7 +26,8 @@ export class TriviaService {
         next: (res) => {
           this.snackBar.open("Question was added!", 'Close', {
             duration: 3500,
-          })
+          });
+          this.getQuestions();
         },
         error: (err) => {
           this.snackBar.open("There was an error adding your trivia question!", 'Close', {
@@ -43,7 +44,7 @@ export class TriviaService {
     return this.http.get(this.dbURL)
       .subscribe({
         next: (res) => {
-          this.questionList = null;
+          this.questionList = [];
           for (const key in res) {
             this.questionList.push({ id: key, ...res[key] });
           }
@@ -80,7 +81,8 @@ export class TriviaService {
         next: (res) => {
           this.snackBar.open("Question was updated!", 'Close', {
             duration: 3500,
-          })
+          });
+          this.getQuestions();
         },
         error: (err) => {
           this.snackBar.open("There was an error updating your trivia question!", 'Close', {
@@ -96,7 +98,8 @@ export class TriviaService {
         next: (res) => {
           this.snackBar.open("Question was deleted!", 'Close', {
             duration: 3500,
-          })
+          });
+          this.getQuestions();
         },
         error: (err) => {
           this.snackBar.open("There was an error deleting your trivia question!", 'Close', {
