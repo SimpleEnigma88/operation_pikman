@@ -156,6 +156,6 @@ export class AuthService {
     this.user.next(null);
     localStorage.removeItem('userData');
     localStorage.removeItem('profileData');
-    this.router.navigate(['/landing-page']);
+    this.router.navigate(['/landing-page']); // May need to change this, depending on component name
   }
 }
