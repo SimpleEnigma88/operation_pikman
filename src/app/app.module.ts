@@ -14,13 +14,16 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthComponent } from './auth/auth.component';
+import { TestingComponent } from './testing/testing.component';
+import { TriviaService } from './trivia.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayGameComponent,
     LandingPageComponent,
-    AuthComponent
+    AuthComponent,
+    TestingComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { AuthComponent } from './auth/auth.component';
     CreateQuestionFormComponent,
     EditQuestionsComponent,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }, TriviaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

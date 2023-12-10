@@ -7,8 +7,9 @@ import { PlayGameComponent } from './play-game/play-game.component';
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingPageComponent },
-  { path: 'auth', component: AuthComponent},
-  { path: 'play', component: PlayGameComponent}
+  { path: 'auth', component: AuthComponent },
+  { path: 'play', component: PlayGameComponent },
+  { path: '**', redirectTo: '/landing', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -17,4 +18,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
