@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthComponent } from './auth/auth.component';
+import { TestingComponent } from './testing/testing.component';
+import { TriviaService } from './trivia.service';
 import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
@@ -22,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     PlayGameComponent,
     LandingPageComponent,
     AuthComponent,
+    TestingComponent,
     NavbarComponent
   ],
   imports: [
@@ -36,7 +39,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     CreateQuestionFormComponent,
     EditQuestionsComponent,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }, TriviaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
