@@ -8,6 +8,8 @@ import { MatTabQComponent } from './question-form/mat-tab-q/mat-tab-q.component'
 import { CreateQuestionFormComponent } from './question-form/create-question-form/create-question-form.component';
 import { EditQuestionsComponent } from './question-form/edit-questions/edit-questions.component';
 import { PlayGameComponent } from './play-game/play-game.component';
+import { QuestionComponent } from './question/question.component';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +24,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   declarations: [
     AppComponent,
     PlayGameComponent,
+playgame_page_component-Andrew,
+    QuestionComponent,
     LandingPageComponent,
     AuthComponent,
     TestingComponent,
@@ -30,6 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    playgame_page_component-Andrew,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
