@@ -16,6 +16,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthComponent } from './auth/auth.component';
 import { TestingComponent } from './testing/testing.component';
 import { TriviaService } from './trivia.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TriviaService } from './trivia.service';
     PlayGameComponent,
     LandingPageComponent,
     AuthComponent,
-    TestingComponent
+    TestingComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
