@@ -1,10 +1,22 @@
+<!-- Created Questions Display -->
+<div class="row mb-3" *ngFor="let question of myQuestions">
+	<div class="col-md-12">
+		<a href="#" class="list-group-item clearfix">
+			<div class="float-left">
+				<h4 class="list-group-item-heading">{{ question.question }}</h4>
+				<p class="list-group-item-text mb-0">{{ question.answer }}</p>
+			</div>
+		</a>
+	</div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onFormSubmit(templateFormRef)" #templateFormRef="ngForm">
+      <form (ngSubmit)="onEditFormSubmit(templateFormRef)" #templateFormRef="ngForm">
         <div id="edit-quest-data">
           <div class="form-group">
-            <label for="edit-question">Edit you question:</label>
+            <label for="edit-question">Edit your question:</label>
             <input
             type="text"
             id="edit-question"

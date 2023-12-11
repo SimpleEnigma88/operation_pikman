@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
 @Component({
   selector: 'app-create-question-form',
   templateUrl: './create-question-form.component.html',
@@ -8,12 +7,20 @@ import { NgForm } from '@angular/forms';
 })
 
 export class CreateQuestionFormComponent {
+  constructor(){}
 
-  onFormSubmit(formObj: NgForm){
+  questFormSubmitted = false;
+    questDetails = {
+      question: " ",
+      answer: " ",
+    };
+
+  onQuestFormSubmit(formObj: NgForm){
     console.log('Submitted!', formObj.value);
-  }
+    this.questFormSubmitted = true;
+    this.questDetails.question = formObj.value.question;
+    this.questDetails.answer = formObj.value.answer;
 
-  constructor(){
-
+    formObj.reset();
   }
-}
+ }

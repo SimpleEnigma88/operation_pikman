@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
  <!-- Creating a question form -->
-      <form (ngSubmit)="onFormSubmit(templateFormRef)" #templateFormRef="ngForm">
+      <form (ngSubmit)="onQuestFormSubmit(templateFormRef)" #templateFormRef="ngForm">
         <div id="trivia-quest-data">
           <div class="form-group">
             <label for="question">What is your question?</label>
             <input type="text"
             id="question"
-            class="form-control"
-            ngModel
-            #questionRef
             name="question"
+            class="form-control"
+            #questionRef
+            ngModel
             required>
             <span class="help-block text-danger" *ngIf="!questionRef.valid && questionRef.touched">Please enter a valid question!</span>
           </div>
@@ -24,6 +24,7 @@
             name="answer"
             class="form-control"
             #answerRef
+            ngModel
             required>
             <option value="true">True</option>
             <option value="false">False</option>
@@ -36,12 +37,11 @@
     </div>
   </div>
 <!-- Created Questions Display -->
-<!-- <div class="row mt-4" *ngIf="formHasBeenSubmitted">
-  <div class="col-xs-12">
-    <h3></h3>
-    <h4></h4>
-    <p></p>
+    <div class="row mt-4" *ngIf="questFormSubmitted">
+      <div class="col-xs-12">
+      <h2>Question: {{ questDetails.question }}</h2>
+      <h3>Answer: {{ questDetails.answer }}</h3>
+    </div>
   </div>
 </div>
-</div>
- -->
+
