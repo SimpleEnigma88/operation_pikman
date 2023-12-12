@@ -1,23 +1,30 @@
-<div class="container" id="main-container" style="height: 100%">
-  <div class="row" id="header-container">
-    <h1 class="text-lg-center">Trivia -- Question #1</h1>
-    <hr>
-  </div>
-  <div class="row" style="height: 100%" id="play-area">
-    <div class="row" style="height: 40%" id="cover-and-trivia">
-      <span style="width: 25%; border: 1px solid black;"><img src="https://picsum.photos/225/300"
-            alt="Placeholder"></span>
-      <span style="width: 75%; border: 1px solid black;">
-        <div class="row" style="height: 100%; border: 1px solid black;">
-        <!-- <app-question></app-question> -->
-        </div>
+<div class="main-container d-flex flex-column" style="width: 100%; height: 100dvh; margin-top: 40px; background-color: rgba(245, 39, 39, 0.25);">
+<div class="header d-flex justify-content-center ">
+  <h1 class="p-2">Movie Trivia -- Question #1!</h1>
+</div>
+<div class="d-flex justify-content-center">
+ <hr width="90%" >
+</div>
+<main class="body-content d-flex">
+  <div class="d-flex ms-5">
+    <div class="flex-shrink-0">
+      <img src="https://picsum.photos/225/300" alt="placeholder image" height="150px" width="150px">
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <span>
+        <app-question></app-question>
       </span>
     </div>
-    <div class="row" id="results" style="border: 1px solid black; height: 200px;">
-      {{result}}
-    </div>
-    <div class="row" id="next-question" style="width: 100%;">
-      <button (click)="goToNextQuestion()" style="width: 175px; align-self: right;">Go To Next Question</button>
-    </div>
   </div>
+</main>
+<div class="d-flex justify-content-center align-items-end" style="margin-top: 30px;">
+  <h2 class="p-2" style="color: #F24822">{{result}}</h2>
 </div>
+<div class="d-flex align-items-end flex-column" style="margin-top: 20px;">
+  <h2 class="mt-auto p-2">Next Trivia Question --> </h2>
+</div>
+</div>
+
+
+
+

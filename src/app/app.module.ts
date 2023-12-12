@@ -8,26 +8,39 @@ import { MatTabQComponent } from './question-form/mat-tab-q/mat-tab-q.component'
 import { CreateQuestionFormComponent } from './question-form/create-question-form/create-question-form.component';
 import { EditQuestionsComponent } from './question-form/edit-questions/edit-questions.component';
 import { PlayGameComponent } from './play-game/play-game.component';
+import { QuestionComponent } from './question/question.component';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { AuthComponent } from './auth/auth.component';
+import { TestingComponent } from './testing/testing.component';
+import { TriviaService } from './trivia.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayGameComponent,
+playgame_page_component-Andrew,
+    QuestionComponent,
     LandingPageComponent,
     CreateQuestionFormComponent,
     EditQuestionsComponent,
     QuestionFormComponent,
     MatTabQComponent,
+    AuthComponent,
+    TestingComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    playgame_page_component-Andrew,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
@@ -35,7 +48,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ReactiveFormsModule,
     MatTabsModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }, TriviaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,15 @@
+<div class="main-container d-flex flex-column justify-content-start" style="width: 100%; margin-top: 5px;">
+<h1>{{currentQuestion}}</h1>
+<form #truefalseref="ngForm" (submit)="submitAnswer(truefalseref)">
+  <div class="form-group">
+    <label>Select correct answer</label>
+    <br>
+<input class="form-check-input" type="radio" id="true" name="answer" value="true" ngModel>
+<label class="form-check-label" for="true">True</label>
+<br>
+<input class="form-check-input" type="radio" id="true" name="answer" value="false" ngModel>
+<label class="form-check-label" for="false">False</label>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit answer</button>
+</form>
+</div>

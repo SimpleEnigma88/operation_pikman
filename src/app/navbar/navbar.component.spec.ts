@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlayGameComponent } from './play-game.component';
+import { NavbarComponent } from './navbar.component';
 
-describe('PlayGameComponent', () => {
-  let component: PlayGameComponent;
-  let fixture: ComponentFixture<PlayGameComponent>;
+describe('NavbarComponent', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PlayGameComponent]
+      declarations: [NavbarComponent]
     });
-    fixture = TestBed.createComponent(PlayGameComponent);
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
