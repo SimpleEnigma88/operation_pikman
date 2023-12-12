@@ -12,9 +12,10 @@ import { QuestionComponent } from './question/question.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AuthComponent } from './auth/auth.component';
 import { TestingComponent } from './testing/testing.component';
 import { TriviaService } from './trivia.service';
@@ -27,6 +28,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 playgame_page_component-Andrew,
     QuestionComponent,
     LandingPageComponent,
+    CreateQuestionFormComponent,
+    EditQuestionsComponent,
+    QuestionFormComponent,
+    MatTabQComponent,
     AuthComponent,
     TestingComponent,
     NavbarComponent
@@ -40,10 +45,8 @@ playgame_page_component-Andrew,
     BrowserAnimationsModule,
     MatSnackBarModule,
     FormsModule,
-    MatTabQComponent,
-    QuestionFormComponent,
-    CreateQuestionFormComponent,
-    EditQuestionsComponent,
+    ReactiveFormsModule,
+    MatTabsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }, TriviaService],
   bootstrap: [AppComponent]

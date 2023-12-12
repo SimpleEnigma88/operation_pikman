@@ -1,24 +1,56 @@
+<!-- Created Questions Display -->
+<div class="row mb-3" *ngFor="let question of myQuestions">
+	<div class="col-md-12">
+		<a href="#" class="list-group-item clearfix">
+			<div class="float-left">
+				<h4 class="list-group-item-heading">{{ question.question }}</h4>
+				<p class="list-group-item-text mb-0">{{ question.answer }}</p>
+			</div>
+		</a>
+	</div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form>
-        <div id="trivia-quest-data">
+      <form (ngSubmit)="onEditFormSubmit(templateFormRef)" #templateFormRef="ngForm">
+        <div id="edit-quest-data">
           <div class="form-group">
-            <label for="question">Edit you question:</label>
-            <input type="text" id="question" class="form-control">
+            <label for="edit-question">Edit your question:</label>
+            <input
+            type="text"
+            id="edit-question"
+            class="form-control"
+            ngModel
+            #editQuestionRef
+            name="edit-question">
+            <span class="help-block text-danger" *ngIf="!editQuestionRef.valid && editQuestionRef.touched">Please enter a valid question!</span>
           </div>
       </div>
-        <div class="trivai-answer-data">
+        <div class="edit-answer-data">
           <div class="form-group">
-            <label for="answer">Change correct answer:</label>
-            <select name="answer" id="trivai-answer-data">
+            <label for="edit-answer">Change correct answer:</label>
+            <select
+              id="edit-answer-data"
+              class="form-control"
+              ngModel
+              #editAnswerRef
+              name="edit-answer">
              <option value="true">True</option>
-            <option value="false">False</option>
+             <option value="false">False</option>
             </select>
+            <span class="help-block text-danger" *ngIf="!editAnswerRef.valid && editAnswerRef.touched">Please enter a valid question!</span>
           </div>
         </div>
-        <button class="btn btn-primary">Resubmit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!templateFormRef.valid">Resubmit</button>
       </form>
+    </div>
+  </div>
+<!-- Created Questions Display -->
+    <div class="row mt-4" *ngIf="questFormSubmitted">
+      <div class="col-xs-12">
+      <h2>Question: {{ questDetails.question }}</h2>
+      <h3>Answer: {{ questDetails.answer }}</h3>
     </div>
   </div>
 </div>
