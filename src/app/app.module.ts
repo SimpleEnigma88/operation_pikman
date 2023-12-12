@@ -9,7 +9,6 @@ import { CreateQuestionFormComponent } from './question-form/create-question-for
 import { EditQuestionsComponent } from './question-form/edit-questions/edit-questions.component';
 import { PlayGameComponent } from './play-game/play-game.component';
 import { QuestionComponent } from './question/question.component';
-import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +16,6 @@ import { AuthInterceptorService } from './auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AuthComponent } from './auth/auth.component';
-import { TestingComponent } from './testing/testing.component';
 import { TriviaService } from './trivia.service';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -25,7 +23,6 @@ import { NavbarComponent } from './navbar/navbar.component';
   declarations: [
     AppComponent,
     PlayGameComponent,
-playgame_page_component-Andrew,
     QuestionComponent,
     LandingPageComponent,
     CreateQuestionFormComponent,
@@ -33,13 +30,11 @@ playgame_page_component-Andrew,
     QuestionFormComponent,
     MatTabQComponent,
     AuthComponent,
-    TestingComponent,
     NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    playgame_page_component-Andrew,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

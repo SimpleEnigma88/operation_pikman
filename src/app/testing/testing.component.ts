@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/* import { Component, OnInit } from '@angular/core';
 import { TriviaService } from '../trivia.service';
 import { Observable } from 'rxjs';
 
@@ -55,3 +55,4 @@ export class TestingComponent implements OnInit {
 
 
 }
+ */
