@@ -11,7 +11,6 @@ export class TriviaService {
   dbURL = 'https://us-central1-pikman-45f13.cloudfunctions.net/pikmanTrivia';
   private TMDB_API_KEY = environment.TMDB_API_KEY;
   private tmdbUrl = 'https://api.themoviedb.org/3';
-  questionListSub = new BehaviorSubject<any>(null);
   questionList: any[] = [];
 
   constructor(
@@ -47,7 +46,6 @@ export class TriviaService {
           for (const key in res) {
             this.questionList.push({ id: key, ...res[key] });
           }
-          this.questionListSub.next(this.questionList);
         },
         error: (err) => {
           console.log("err: ", err);
