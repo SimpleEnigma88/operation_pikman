@@ -17,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AuthComponent } from './auth/auth.component';
 import { TriviaService } from './trivia.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatTabQComponent,
     AuthComponent,
     NavbarComponent,
+    ResultPageComponent
   ],
   imports: [
     BrowserModule,
