@@ -7,7 +7,6 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { MatTabQComponent } from './question-form/mat-tab-q/mat-tab-q.component';
 import { CreateQuestionFormComponent } from './question-form/create-question-form/create-question-form.component';
 import { EditQuestionsComponent } from './question-form/edit-questions/edit-questions.component';
-import { PlayGameComponent } from './play-game/play-game.component';
 import { QuestionComponent } from './question/question.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -22,7 +21,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PlayGameComponent,
     QuestionComponent,
     LandingPageComponent,
     CreateQuestionFormComponent,
@@ -30,7 +28,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     QuestionFormComponent,
     MatTabQComponent,
     AuthComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
