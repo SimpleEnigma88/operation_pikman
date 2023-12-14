@@ -1,6 +1,6 @@
 /* import { Component, OnInit } from '@angular/core';
 import { TriviaService } from '../trivia.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-testing',
@@ -9,20 +9,24 @@ import { Observable } from 'rxjs';
 })
 export class TestingComponent implements OnInit {
   questionList: any[] = [];
-  questionList$: Observable<any[]>;
   moviePosters: any[] = [];
   movieQuery: string;
+  subs: Subscription;
 
   constructor(private triviaService: TriviaService) {
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.triviaService.getQuestions();
-    this.triviaService.questionListSub.subscribe((questionList) => {
-      this.questionList = questionList;
-    });
-    this.questionList$ = this.triviaService.questionListSub.asObservable();
+    this.subs = this.triviaService.questionSub.subscribe(
+      (res) => {
+        if (res) {
+          this.questionList = res;
+        }
+
+      }
+    );
   }
 
   getMoviePosters(query: string) {

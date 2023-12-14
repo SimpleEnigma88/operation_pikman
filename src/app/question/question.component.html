@@ -1,15 +1,42 @@
-<div class="main-container d-flex flex-column justify-content-start" style="width: 100%; margin-top: 5px;">
-<h1>{{currentQuestion}}</h1>
-<form #truefalseref="ngForm" (submit)="submitAnswer(truefalseref)">
-  <div class="form-group">
-    <label>Select correct answer</label>
-    <br>
-<input class="form-check-input" type="radio" id="true" name="answer" value="true" ngModel>
-<label class="form-check-label" for="true">True</label>
-<br>
-<input class="form-check-input" type="radio" id="true" name="answer" value="false" ngModel>
-<label class="form-check-label" for="false">False</label>
+<div class="main-container d-flex flex-column"
+    style="width: 100dwh; height: 100dvh; margin-top: 30px; background-color: rgba(245, 39, 39, 0.25);">
+  <div class="header d-flex justify-content-center ">
+    <h1 class="p-2">Movie Trivia -- Question #{{counter + 1}}!</h1>
   </div>
-  <button class="btn btn-primary" type="submit">Submit answer</button>
-</form>
+  <div class="d-flex justify-content-center">
+    <hr width="80%">
+  </div>
+  <div class="d-flex">
+    <div class="d-flex ms-5">
+      <div class="flex-shrink-0">
+        <img src="{{picUrl}}" alt="placeholder image" height="150px" width="150px">
+      </div>
+      <div class="flex-grow-1 ms-3">
+        <span>
+          <div class="main-container d-flex flex-column justify-content-start" style="width: 100%; margin-top: 5px;">
+            <h1>{{currentQuestion}}</h1>
+            <form #truefalseref="ngForm" id="form" (submit)="submitAnswer(truefalseref)">
+              <div class="form-group">
+                <label>Select correct answer</label>
+                <br>
+                <input class="form-check-input" type="radio" id="true" name="answer" value="true" ngModel>
+                <label class="form-check-label" for="true">True</label>
+                <br>
+                <input class="form-check-input" type="radio" id="true" name="answer" value="false" ngModel>
+                <label class="form-check-label" for="false">False</label>
+              </div>
+              <button class="btn btn-primary" type="submit">Submit answer</button>
+            </form>
+            <a style="cursor: pointer;" (click)="goToNextQuestion()">
+              <button *ngIf="counter < questionList.length - 1 && showNext">Next Question ==></button>
+            </a>
+          </div>
+
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-end" style="margin-top: 30px;">
+    <h2 class="p-2" style="color: #F24822">{{result}}</h2>
+  </div>
 </div>
