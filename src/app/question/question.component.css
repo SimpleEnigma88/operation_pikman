@@ -1,3 +1,17 @@
+.header {
+  margin-top: 1.5rem;
+}
+
+.container {
+  padding: 0px;
+}
+
+.quiz {
+  justify-content: center;
+  border: 2px;
+}
+
+
 /* Hide the default radio button */
 /* input[type="radio"] {
   display: none;
@@ -26,4 +40,3 @@
 /* input[type="radio"]:checked + label:before {
   background-color: #2196F3;
 } */
-
