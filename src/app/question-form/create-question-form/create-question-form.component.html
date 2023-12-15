@@ -1,8 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
- <!-- Creating a question form -->
+      <!-- Creating a question form -->
       <form (ngSubmit)="onQuestFormSubmit(templateFormRef)" #templateFormRef="ngForm">
+        <div class="trivia-title">
+          <div class="form-group">
+            <label for="title">What movie is your question about?</label>
+            <input type="text"
+            id="title"
+            name="title"
+            class="form-control"
+            #titleRef
+            ngModel
+            required>
+          <span class="help-block text-danger" *ngIf="!answerRef.valid && answerRef.touched">Please enter a valid question!</span>
+          </div>
+        </div>
         <div id="trivia-quest-data">
           <div class="form-group">
             <label for="question">What is your question?</label>
@@ -39,8 +52,9 @@
 <!-- Created Questions Display -->
     <div class="row mt-4" *ngIf="questFormSubmitted">
       <div class="col-xs-12">
-      <h2>Question: {{ questDetails.question }}</h2>
-      <h3>Answer: {{ questDetails.answer }}</h3>
+        <h2>Title: {{ questDetails.title }}</h2>
+        <h3>Question: {{ questDetails.question }}</h3>
+        <h3>Answer: {{ questDetails.answer }}</h3>
     </div>
   </div>
 </div>

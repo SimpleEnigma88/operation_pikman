@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TriviaService } from '../../trivia.service';
 @Component({
   selector: 'app-create-question-form',
   templateUrl: './create-question-form.component.html',
@@ -7,10 +8,12 @@ import { NgForm } from '@angular/forms';
 })
 
 export class CreateQuestionFormComponent {
-  constructor(){}
+  constructor( private triviaService: TriviaService){
 
+  }
   questFormSubmitted = false;
     questDetails = {
+      title: " ",
       question: " ",
       answer: " ",
     };
@@ -20,7 +23,11 @@ export class CreateQuestionFormComponent {
     this.questFormSubmitted = true;
     this.questDetails.question = formObj.value.question;
     this.questDetails.answer = formObj.value.answer;
-
+    this.questDetails.title = formObj.value.title;
+    this.triviaService.addQuestionToDB(
+      this.questDetails.title,
+      this.questDetails.question,
+      this.questDetails.answer);
     formObj.reset();
   }
  }

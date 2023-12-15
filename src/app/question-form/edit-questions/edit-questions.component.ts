@@ -20,8 +20,16 @@ export class EditQuestionsComponent {
 
   }
 
+  editFormSubmitted = false;
+  editDetails = {
+    title: " ",
+    question: " ",
+    answer: " ",
+  };
+
   questFormSubmitted = false;
   questDetails = {
+    title: " ",
     question: " ",
     answer: " ",
   };
@@ -31,7 +39,7 @@ export class EditQuestionsComponent {
     this.questFormSubmitted = true;
     this.questDetails.question = formObj.value.question;
     this.questDetails.answer = formObj.value.answer;
-
+    this.questDetails.title = formObj.value.title;
     formObj.reset();
   }
 }

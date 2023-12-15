@@ -11,9 +11,22 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="editFormSubmitted">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onEditFormSubmit(templateFormRef)" #templateFormRef="ngForm">
+        <div id="edit-title">
+          <div class="form-group">
+            <label for="edit-question">Change movie title:</label>
+            <input
+            type="text"
+            id="edit-title"
+            class="form-control"
+            ngModel
+            #editTitleRef
+            name="edit-title">
+            <span class="help-block text-danger" *ngIf="!editQuestionRef.valid && editQuestionRef.touched">Please enter a valid question!</span>
+          </div>
+      </div>
         <div id="edit-quest-data">
           <div class="form-group">
             <label for="edit-question">Edit your question:</label>
@@ -49,8 +62,8 @@
 <!-- Created Questions Display -->
     <div class="row mt-4" *ngIf="questFormSubmitted">
       <div class="col-xs-12">
-      <h2>Question: {{ questDetails.question }}</h2>
-      <h3>Answer: {{ questDetails.answer }}</h3>
+<!--       <h2>Question: {{ questDetails.question }}</h2>
+      <h3>Answer: {{ questDetails.answer }}</h3> -->
     </div>
   </div>
 </div>

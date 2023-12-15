@@ -38,8 +38,8 @@ export class TriviaService {
       });
   }
 
-  addQuestionToDB(question: string, answer: string) {
-    return this.http.post(this.dbURL, { question, answer })
+  addQuestionToDB(movieTitle: string, question: string, answer: string) {
+    return this.http.post(this.dbURL, { movieTitle, question, answer })
       .subscribe({
         next: (res) => {
           this.snackBar.open("Question was added!", 'Close', {
@@ -57,8 +57,8 @@ export class TriviaService {
       });
   }
 
-  updateQuestion(id: string, question: string, answer: string) {
-    return this.http.put(`${this.dbURL}/questions/${id}`, { question, answer })
+  updateQuestion(id: string, movieTitle: string, question: string, answer: string) {
+    return this.http.put(`${this.dbURL}/questions/${id}`, { movieTitle, question, answer })
       .subscribe({
         next: (res) => {
           this.snackBar.open("Question was updated!", 'Close', {
