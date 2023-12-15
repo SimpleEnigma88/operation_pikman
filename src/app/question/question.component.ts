@@ -36,6 +36,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
     const form = document.getElementById('form') as HTMLFormElement;
     form.reset();
     this.showNext = false;
+    this.questionResult.userIsRight.next(null);
+
   }
 
   getPosterUrl() {

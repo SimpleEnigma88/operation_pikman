@@ -12,8 +12,7 @@ const routes: Routes = [
   { path: 'questions', component: QuestionComponent },
   { path: 'edit', component: QuestionFormComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'results', component: ResultPageComponent},
-  { path: '**', redirectTo: '/landing', pathMatch: 'full' },
+  { path: 'results', component: ResultPageComponent }
 ];
 
 @NgModule({
