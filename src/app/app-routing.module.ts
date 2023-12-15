@@ -9,11 +9,10 @@ import { QuestionComponent } from './question/question.component';
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingPageComponent },
-  { path: 'questions', component: QuestionComponent },
+  { path: 'play', component: QuestionComponent },
   { path: 'edit', component: QuestionFormComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'results', component: ResultPageComponent},
-  { path: '**', redirectTo: '/landing', pathMatch: 'full' },
 ];
 
 @NgModule({
