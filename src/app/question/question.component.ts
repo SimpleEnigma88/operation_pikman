@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TriviaService } from '../trivia.service';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { QuestionResultService } from '../result.service';
+import { StatsService } from '../stats.service';
 
 @Component({
   selector: 'app-question',
@@ -23,7 +24,10 @@ export class QuestionComponent implements OnInit, OnDestroy {
   showNext: boolean = false;
   picUrl: string = "";
 
-  constructor(private triviaService: TriviaService, private questionResult: QuestionResultService) { }
+  constructor(
+    private triviaService: TriviaService,
+    private questionResult: QuestionResultService,
+    private statsService: StatsService) { }
 
   goToNextQuestion() {
     this.counter++;
@@ -55,8 +59,10 @@ export class QuestionComponent implements OnInit, OnDestroy {
     console.log(FormObj.value.answer, this.correctAnswer);
     if (FormObj.value.answer == this.correctAnswer) {
       this.questionResult.answerReceived("Correct!!!");
+      this.statsService.incrementCorrect();
     } else {
       this.questionResult.answerReceived("Wrong Answer!");
+      this.statsService.incrementWrong();
     }
   }
 
