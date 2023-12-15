@@ -2,17 +2,19 @@
 <div class="container">
   <div class="row mt-4" *ngIf="!editFormSubmitted">
     <div class="col-xs-12">
-      <div class="questionImported"
-      *ngFor="let question of questionList; let i = index">
-        <div class="card" id="{{ i }}" style = "padding: 5px">
+      <div
+        class="questionImported"
+        *ngFor="let question of questionList; let i = index"
+      >
+        <div class="card" id="{{ i }}" style="padding: 5px">
           <h2>Movie Title: {{ question.movieTitle }}</h2>
           <h3>Question: {{ question.question }}</h3>
           <h3>Answer: {{ question.answer }}</h3>
-          <div class="poster" style="float: right;">
+          <div class="poster" style="float: right">
             <img
-              src= "{{ getPosterUrl(question.movieTitle) }}"
+              src=""
               alt="Movie Poster"
-              style="width: 200px; height: 300px;"
+              style="width: 200px; height: 300px"
             />
           </div>
         </div>
