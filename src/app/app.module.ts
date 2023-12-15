@@ -30,7 +30,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
     MatTabQComponent,
     AuthComponent,
     NavbarComponent,
-    ResultPageComponent
+    ResultPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +41,15 @@ import { ResultPageComponent } from './result-page/result-page.component';
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }, TriviaService],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
