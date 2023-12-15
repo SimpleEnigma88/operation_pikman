@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TriviaService } from '../trivia.service';
+import { TriviaService } from '../shared/services/trivia.service';
 import { Subscription } from 'rxjs';
-import { QuestionResultService } from '../result.service';
-import { StatsService } from '../stats.service';
+import { QuestionResultService } from '../shared/services/result.service';
+import { StatsService } from '../shared/services/stats.service';
 
 @Component({
   selector: 'app-question',
