@@ -52,9 +52,11 @@
 <!-- Created Questions Display -->
     <div class="row mt-4" *ngIf="questFormSubmitted">
       <div class="col-xs-12">
-        <h2>Title: {{ questDetails.title }}</h2>
-        <h3>Question: {{ questDetails.question }}</h3>
-        <h3>Answer: {{ questDetails.answer }}</h3>
+        <div class="questionImported" *ngFor="let question of questionList">
+          <h2>Movie Title: {{ question.movieTitle }}</h2>
+          <h3>Question: {{ question.question }}</h3>
+          <h3>Answer: {{ question.answer }}</h3>
+        </div>
     </div>
   </div>
 </div>
