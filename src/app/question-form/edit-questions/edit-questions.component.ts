@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TriviaService } from '../../trivia.service';
+import { TriviaService } from '../../shared/services/trivia.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-edit-questions',
@@ -8,14 +8,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./edit-questions.component.css'],
 })
 
-export class EditQuestionsComponent implements OnInit, OnDestroy{
+export class EditQuestionsComponent implements OnInit, OnDestroy {
 
   questionList: any[] = [];
   questionSub: Subscription;
   Msub: Subscription;
   picUrl = "";
 
-  constructor( private triviaService: TriviaService){
+  constructor(private triviaService: TriviaService) {
   }
 
   ngOnInit(): void {
@@ -48,12 +48,12 @@ export class EditQuestionsComponent implements OnInit, OnDestroy{
     answer: " ",
   };
 
-  onEditFormSubmit(formObj: NgForm){
+  onEditFormSubmit(formObj: NgForm) {
     console.log('Submitted!', formObj.value);
     this.editFormSubmitted = true;
     this.editDetails.title = formObj.value.title;
     this.editDetails.question = formObj.value.question;
     this.editDetails.answer = formObj.value.answer;
     formObj.reset();
-    }
   }
+}

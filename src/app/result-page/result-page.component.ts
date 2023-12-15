@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StatsService } from '../stats.service';
+import { StatsService } from '../shared/services/stats.service';
 import { Subscription } from 'rxjs';
 
 @Component({

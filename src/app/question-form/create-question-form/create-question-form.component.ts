@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TriviaService } from '../../trivia.service';
+import { TriviaService } from '../../shared/services/trivia.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-create-question-form',
@@ -13,7 +13,7 @@ export class CreateQuestionFormComponent implements OnInit, OnDestroy {
   questionList: any[] = [];
   questionSub: Subscription;
 
-  constructor( private triviaService: TriviaService){
+  constructor(private triviaService: TriviaService) {
   }
 
   ngOnInit(): void {
@@ -30,13 +30,13 @@ export class CreateQuestionFormComponent implements OnInit, OnDestroy {
   }
 
   questFormSubmitted = false;
-    questDetails = {
-      title: " ",
-      question: " ",
-      answer: " ",
-    };
+  questDetails = {
+    title: " ",
+    question: " ",
+    answer: " ",
+  };
 
-  onQuestFormSubmit(formObj: NgForm){
+  onQuestFormSubmit(formObj: NgForm) {
     console.log('Submitted!', formObj.value);
     this.questFormSubmitted = true;
     this.questDetails.question = formObj.value.question;
@@ -48,4 +48,4 @@ export class CreateQuestionFormComponent implements OnInit, OnDestroy {
       this.questDetails.answer);
     formObj.reset();
   }
- }
+}

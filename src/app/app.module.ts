@@ -11,11 +11,11 @@ import { QuestionComponent } from './question/question.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthInterceptorService } from './auth-interceptor.service';
+import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AuthComponent } from './auth/auth.component';
-import { TriviaService } from './trivia.service';
+import { TriviaService } from './shared/services/trivia.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 
@@ -52,4 +52,4 @@ import { ResultPageComponent } from './result-page/result-page.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

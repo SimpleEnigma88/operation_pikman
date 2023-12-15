@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthResponseData, AuthService } from '../auth.service';
+import { AuthResponseData, AuthService } from '../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class AuthComponent implements OnInit {
   errMsg: string = null;
   authObserv: Observable<AuthResponseData>;
 
-  constructor(private authService: AuthService, private router: Router,  private route: ActivatedRoute){}
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     console.log(this.isLoginMode)
@@ -22,12 +22,12 @@ export class AuthComponent implements OnInit {
 
   onSwitchAuthMode() {
     this.isLoginMode = !this.isLoginMode;
-  }  
+  }
 
   onAuthFormSubmit(formObj: NgForm) {
-    if(!formObj.valid) return;
+    if (!formObj.valid) return;
 
-    const {email, password} = formObj.value
+    const { email, password } = formObj.value
 
     let authObserv: Observable<AuthResponseData>;
 
