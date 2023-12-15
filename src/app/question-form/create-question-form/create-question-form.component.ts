@@ -1,16 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TriviaService } from '../../trivia.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-create-question-form',
   templateUrl: './create-question-form.component.html',
   styleUrls: ['./create-question-form.component.css'],
 })
 
-export class CreateQuestionFormComponent {
-  constructor( private triviaService: TriviaService){
+export class CreateQuestionFormComponent implements OnInit, OnDestroy {
 
+  questionList: any[] = [];
+  questionSub: Subscription;
+
+  constructor( private triviaService: TriviaService){
   }
+
+  ngOnInit(): void {
+    this.triviaService.getQuestions();
+    this.questionSub = this.triviaService.questionSub.subscribe({
+      next: (res) => {
+        this.questionList = res;
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.questionSub.unsubscribe();
+  }
+
   questFormSubmitted = false;
     questDetails = {
       title: " ",
