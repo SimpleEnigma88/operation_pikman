@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatsService {
-  correctAnswers: number = 0;
-  wrongAnswers: number = 0;
-  score: number = 0;
+  correctAnswers = new Subject<number>;
+  wrongAnswers = new Subject<number>;
+  testRight: number = 0;
+  testWrong: number = 0;
+
 
   constructor() { }
 
   incrementCorrect() {
-    this.correctAnswers++;
+    this.testRight++;
+    this.correctAnswers.next(this.testRight);
+    console.log("Stats Serv: ", this.testRight);
   }
 
   incrementWrong() {
-    this.wrongAnswers++;
+    this.testWrong++;
+    this.wrongAnswers.next(this.testWrong);
+    console.log("Stats Serv: ", this.testWrong);
   }
 
   calculateScore() {
-    this.score = this.correctAnswers / (this.correctAnswers + this.wrongAnswers) * 100;
+    return this.testRight / (this.testRight + this.testWrong) * 100;
   }
 }
