@@ -23,6 +23,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   result: string = "";
   showNext: boolean = false;
   picUrl: string = "";
+  isSubmitted: boolean = false;
 
   constructor(
     private triviaService: TriviaService,
@@ -41,7 +42,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
     form.reset();
     this.showNext = false;
     this.questionResult.userIsRight.next(null);
-
+    this.isSubmitted = false;
   }
 
   getPosterUrl() {
@@ -64,6 +65,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
       this.questionResult.answerReceived("Wrong Answer!");
       this.statsService.incrementWrong();
     }
+    this.isSubmitted = true;
   }
 
   ngOnInit(): void {

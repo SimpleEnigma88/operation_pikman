@@ -25,7 +25,7 @@
                 <input class="form-check-input" type="radio" id="true" name="answer" value="false" ngModel>
                 <label class="form-check-label" for="false">False</label>
               </div>
-              <button class="btn btn-primary" type="submit">Submit answer</button>
+              <button class="btn btn-primary" type="submit" [disabled]="isSubmitted">Submit answer</button>
             </form>
             <a style="cursor: pointer;" (click)="goToNextQuestion()">
               <button *ngIf="counter < questionList.length - 1 && showNext">Next Question ==></button>

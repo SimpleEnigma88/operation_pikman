@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'operation_pikman';
+  title = 'Pikman Movie Trivia';
 
   constructor(private authService: AuthService) { }
 
