@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- Creating a question form -->
+      <form (ngSubmit)="onQuestFormSubmit(templateFormRef)" #templateFormRef="ngForm">
+        <div class="trivia-title">
+          <div class="form-group">
+            <label for="title">What movie is your question about?</label>
+            <input type="text"
+            id="title"
+            name="title"
+            class="form-control"
+            #titleRef
+            ngModel
+            required>
+          <span class="help-block text-danger" *ngIf="!answerRef.valid && answerRef.touched">Please enter a valid question!</span>
+          </div>
+        </div>
+        <div id="trivia-quest-data">
+          <div class="form-group">
+            <label for="question">What is your question?</label>
+            <input type="text"
+            id="question"
+            name="question"
+            class="form-control"
+            #questionRef
+            ngModel
+            required>
+            <span class="help-block text-danger" *ngIf="!questionRef.valid && questionRef.touched">Please enter a valid question!</span>
+          </div>
+      </div>
+        <div class="trivia-answer-data">
+          <div class="form-group">
+            <label for="answer">Select correct answer:</label>
+            <select
+            id="trivia-answer-data"
+            name="answer"
+            class="form-control"
+            #answerRef
+            ngModel
+            required>
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+          <span class="help-block text-danger" *ngIf="!answerRef.valid && answerRef.touched">Please enter a valid question!</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!templateFormRef.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+<!-- Created Questions Display -->
+    <div class="row mt-4" *ngIf="questFormSubmitted">
+      <div class="col-xs-12">
+        <div class="questionImported" *ngFor="let question of questionList">
+          <h2>Movie Title: {{ question.movieTitle }}</h2>
+          <h3>Question: {{ question.question }}</h3>
+          <h3>Answer: {{ question.answer }}</h3>
+        </div>
+    </div>
+  </div>
+</div>
+
