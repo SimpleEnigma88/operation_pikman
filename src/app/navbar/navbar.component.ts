@@ -16,6 +16,10 @@ export class NavbarComponent {
     });
   }
 
+  goToQManager() {
+    this.router.navigate(['/edit']);
+  }
+
   Logout() {
     this.authService.logout();
   }

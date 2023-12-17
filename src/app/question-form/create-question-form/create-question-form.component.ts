@@ -44,7 +44,8 @@ export class CreateQuestionFormComponent implements OnInit, OnDestroy {
     this.triviaService.addQuestionToDB(
       this.questDetails.title,
       this.questDetails.question,
-      this.questDetails.answer);
+      this.questDetails.answer
+    );
     formObj.reset();
   }
 }

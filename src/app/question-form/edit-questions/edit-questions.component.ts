@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TriviaService } from '../../shared/services/trivia.service';
 import { Subscription } from 'rxjs';
@@ -9,11 +9,18 @@ import { Subscription } from 'rxjs';
 })
 
 export class EditQuestionsComponent implements OnInit, OnDestroy {
+  @ViewChild('templateForm') templateFormRef: NgForm;
 
   questionList: any[] = [];
   questionSub: Subscription;
   Msub: Subscription;
   picUrl = "";
+  selectedCard: any = {
+    title: " ",
+    question: " ",
+    answer: " ",
+    id: " ",
+  };
 
   constructor(private triviaService: TriviaService) {
   }
@@ -27,6 +34,16 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
     });
   }
 
+  cancelEdit() {
+    this.templateFormRef.reset();
+    this.editFormSubmitted = false;
+    this.selectedCard = null;
+  }
+
+  onCardClick(question: any) {
+    this.selectedCard = question;
+    this.editFormSubmitted = true;
+  }
   ngOnDestroy(): void {
     this.questionSub.unsubscribe();
   }
@@ -44,6 +61,7 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
     title: " ",
     question: " ",
     answer: " ",
+    id: " ",
   };
 
   onEditFormSubmit(formObj: NgForm) {
@@ -51,6 +69,13 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
     this.editDetails.title = formObj.value.title;
     this.editDetails.question = formObj.value.question;
     this.editDetails.answer = formObj.value.answer;
+    this.editDetails.id = formObj.value.id;
+    this.triviaService.updateQuestion(
+      this.editDetails.id,
+      this.editDetails.title,
+      this.editDetails.question,
+      this.editDetails.answer
+    );
     formObj.reset();
   }
 }

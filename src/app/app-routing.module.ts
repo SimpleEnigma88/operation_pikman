@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { AuthComponent } from './auth/auth.component';
-import { ResultPageComponent } from './result-page/result-page.component';
 import { QuestionComponent } from './question/question.component';
 
 const routes: Routes = [
