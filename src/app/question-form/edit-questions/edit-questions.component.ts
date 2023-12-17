@@ -40,9 +40,13 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
   cancelEdit(templateFormRef: NgForm) {
     console.log("cancel edit");
     templateFormRef.reset();
-    this.selectedCard = null;
+    this.selectedCard = {
+      id: "",
+      title: "",
+      question: "",
+      answer: "",
+    };
     this.displayEditForm = false;
-    this.triviaService.getQuestions();
   }
 
   onCardClick(id: string, question: any) {

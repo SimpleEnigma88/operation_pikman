@@ -58,16 +58,20 @@ export class TriviaService {
     return this.http.post(this.dbURL, { movieTitle, question, answer })
       .subscribe({
         next: (res) => {
+          console.log("res: ", res);
           this.snackBar.open("Question was added!", 'Close', {
             duration: 3500,
           });
         },
         error: (err) => {
+          console.log("err: ", err);
           this.snackBar.open("There was an error adding your trivia question!", 'Close', {
             duration: 3500,
           });
         },
         complete: () => {
+          console.log("complete");
+
         }
       });
   }
