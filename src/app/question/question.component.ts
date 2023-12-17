@@ -69,7 +69,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.triviaService.getQuestions();
+    this.triviaService.getQuestions(10);
     this.Tsub = this.triviaService.questionSub.subscribe(
       (res) => {
         if (res) {

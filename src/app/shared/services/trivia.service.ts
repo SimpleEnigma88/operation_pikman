@@ -19,15 +19,18 @@ export class TriviaService {
     private snackBar: MatSnackBar
   ) { }
 
-  getQuestions() {
+  getQuestions(numQuestions?: number) {
     return this.http.get(this.dbURL)
       .subscribe({
         next: (res) => {
           this.questionList = [];
           for (const key in res) {
             this.questionList.push({ id: key, ...res[key] });
-            this.questionSub.next(this.questionList);
           }
+          if (numQuestions) {
+            this.questionList = this.getRandom(this.questionList, numQuestions);
+          }
+          this.questionSub.next(this.questionList);
         },
         error: (err) => {
           console.log("err: ", err);
@@ -36,6 +39,20 @@ export class TriviaService {
           console.log("complete");
         }
       });
+  }
+
+  getRandom(arr, n) {
+    let result = new Array(n),
+      len = arr.length,
+      taken = new Array(len);
+    if (n > len)
+      throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+      let x = Math.floor(Math.random() * len);
+      result[n] = arr[x in taken ? taken[x] : x];
+      taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
   }
 
   addQuestionToDB(movieTitle: string, question: string, answer: string) {

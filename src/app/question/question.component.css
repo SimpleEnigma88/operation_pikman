@@ -10,33 +10,3 @@
   justify-content: center;
   border: 2px;
 }
-
-
-/* Hide the default radio button */
-/* input[type="radio"] {
-  display: none;
-} */
-
-/* Style the label to create custom radio button appearance */
-/* input[type="radio"] + label {
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-} */
-
-/* Create the custom radio button */
-/* input[type="radio"] + label:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 25px;
-  height: 25px;
-  border: 2px solid #999;
-  border-radius: 50%;
-}
- */
-/* Style the custom radio button when it's checked */
-/* input[type="radio"]:checked + label:before {
-  background-color: #2196F3;
-} */
