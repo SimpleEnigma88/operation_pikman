@@ -76,9 +76,12 @@ export class TriviaService {
     return this.http.put(`${this.dbURL}/questions/${id}`, { movieTitle, question, answer })
       .subscribe({
         next: (res) => {
-          this.snackBar.open("Question was updated!", 'Close', {
-            duration: 3500,
-          });
+          console.log("res: ", res);
+          if (res) {
+            this.snackBar.open("Question was updated!", 'Close', {
+              duration: 3500,
+            });
+          }
         },
         error: (err) => {
           this.snackBar.open("There was an error updating your trivia question!", 'Close', {
