@@ -9,10 +9,9 @@ import { QuestionComponent } from './question/question.component';
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingPageComponent },
-  { path: 'play', component: QuestionComponent },
-  { path: 'edit', component: QuestionFormComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'results', component: ResultPageComponent },
+  { path: 'edit', component: QuestionFormComponent },
+  { path: 'play', component: QuestionComponent },
   { path: 'dummy', component: LandingPageComponent }
 ];
 
