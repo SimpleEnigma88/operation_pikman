@@ -36,7 +36,6 @@ export class TriviaService {
           console.log("err: ", err);
         },
         complete: () => {
-          console.log("complete");
         }
       });
   }
@@ -69,7 +68,6 @@ export class TriviaService {
           });
         },
         complete: () => {
-          console.log("complete");
         }
       });
   }
@@ -113,20 +111,3 @@ export class TriviaService {
   }
 
 }
-
-
-/*   getQuestionById(id: string) {
-    return this.http.get(`${this.dbURL}/questions/${id}`)
-      .subscribe({
-        next: (res) => {
-          console.log("res: ", res);
-          this.questionSub.next(res);
-        },
-        error: (err) => {
-          console.log("err: ", err);
-        },
-        complete: () => {
-          console.log("complete");
-        }
-      });
-  } */

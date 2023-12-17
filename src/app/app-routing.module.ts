@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'play', component: QuestionComponent },
   { path: 'edit', component: QuestionFormComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'results', component: ResultPageComponent},
+  { path: 'results', component: ResultPageComponent },
+  { path: 'dummy', component: LandingPageComponent }
 ];
 
 @NgModule({

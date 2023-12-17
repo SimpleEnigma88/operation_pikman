@@ -34,9 +34,7 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
   getPosterUrl(title: string) {
     this.Msub = this.triviaService.searchMovies(title).subscribe(
       (res) => {
-        console.log(res);
         this.picUrl = "https://image.tmdb.org/t/p/w500" + res.results[0].poster_path;
-        console.log(this.picUrl);
       }
     );
   }
@@ -49,7 +47,6 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
   };
 
   onEditFormSubmit(formObj: NgForm) {
-    console.log('Submitted!', formObj.value);
     this.editFormSubmitted = true;
     this.editDetails.title = formObj.value.title;
     this.editDetails.question = formObj.value.question;

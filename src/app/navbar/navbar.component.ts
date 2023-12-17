@@ -10,6 +10,12 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
+  reloadPlayRoute() {
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/play']);
+    });
+  }
+
   Logout() {
     this.authService.logout();
   }

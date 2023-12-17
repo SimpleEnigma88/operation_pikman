@@ -20,21 +20,15 @@ export class ResultPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.Rsub = this.statsService.correctAnswers.subscribe(
       (res) => {
-        console.log("Result Page: ", res);
-
         this.rightAnswers = res;
       }
     );
     this.Wsub = this.statsService.wrongAnswers.subscribe(
       (res) => {
-        console.log("Result Page: ", res);
         this.wrongAnswers = res;
       }
     );
     this.score = this.rightAnswers / (this.rightAnswers + this.wrongAnswers) * 100;
-    console.log(this.rightAnswers);
-    console.log(this.wrongAnswers);
-    console.log(this.score);
   }
 
   ngOnDestroy(): void {

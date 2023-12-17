@@ -17,7 +17,6 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.isLoginMode)
   }
 
   onSwitchAuthMode() {
@@ -36,10 +35,8 @@ export class AuthComponent implements OnInit {
     } else {
       authObserv = this.authService.signup(formObj.value.email, formObj.value.password);
     }
-    // console.log(authObserv)
     authObserv.subscribe(
       (res) => {
-        console.log(res);
         this.router.navigate(['/play'])//will be the where it goes once logged in
       },
       errorMessage => {

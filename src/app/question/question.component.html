@@ -1,42 +1,110 @@
-<div class="container d-flex flex-column"
-    style="height: 100dvh;;">
+<div class="container d-flex flex-column" style="height: 100dvh">
   <div class="header d-flex justify-content-center">
-    <h1 class="p-2">Movie Trivia -- Question #{{counter + 1}}!</h1>
+    <h1 class="p-2">Movie Trivia -- Question #{{ counter + 1 }}!</h1>
   </div>
   <div class="d-flex justify-content-center">
-    <hr width="80%">
+    <hr width="80%" />
   </div>
   <div class="d-flex quiz border-warning">
-    <div class="d-flex ms-5">
+    <div id="playField" *ngIf="!resultsButtonClicked" class="d-flex ms-5">
       <div class="flex-shrink-0">
-        <img src="{{picUrl}}" alt="placeholder image" height="333px" width="250px">
+        <img
+            src="{{ picUrl }}"
+            alt="placeholder image"
+            height="333px"
+            width="250px" />
       </div>
       <div class="ms-3">
         <span>
-          <div class="flex-column" style="width: 100%; margin-top: 5px;">
-            <h1><strong>{{currentQuestion}}</strong></h1>
-            <form #truefalseref="ngForm" id="form" (submit)="submitAnswer(truefalseref)">
-              <div class="form-group ">
+          <div class="flex-column" style="width: 100%; margin-top: 5px">
+            <h1>
+              <strong>{{ currentQuestion }}</strong>
+            </h1>
+            <form
+                #truefalseref="ngForm"
+                id="form"
+                (submit)="submitAnswer(truefalseref)">
+              <div class="form-group">
                 <label>Select correct answer</label>
-                <br>
-                <input class="form-check-input" type="radio" id="true" name="answer" value="true" ngModel>
+                <br />
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    id="true"
+                    name="answer"
+                    value="true"
+                    ngModel
+                    (change)="onRadioButtonSelect()" />
                 <label class="form-check-label" for="true"> True</label>
-                <br>
-                <input class="form-check-input" type="radio" id="true" name="answer" value="false" ngModel>
+                <br />
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    id="true"
+                    name="answer"
+                    value="false"
+                    ngModel
+                    (change)="onRadioButtonSelect()" />
                 <label class="form-check-label" for="false">False</label>
               </div>
-              <button class="btn btn-primary" type="submit" [disabled]="isSubmitted">Submit answer</button>
+              <div class="button-group">
+                <button
+                    class="btn btn-primary"
+                    style="background-color: #3da9efff"
+                    type="submit"
+                    [disabled]="!isRadioButtonSelected || isSubmitted">
+                  Submit answer
+                </button>
+                <span class="separator"> | </span>
+                <a style="cursor: pointer" (click)="goToNextQuestion()">
+                  <button
+                      class="btn btn-success"
+                      style="background-color: #3da9efff"
+                      *ngIf="counter < questionList.length - 1 && showNext">
+                    Next Question ==>
+                  </button>
+                </a>
+                <a
+                    style="cursor: pointer"
+                    *ngIf="counter >= questionList.length - 1 && showNext"
+                    (click)="goToResultsPage()">
+                  <button
+                      class="btn btn-success"
+                      style="background-color: green">
+                    See Results!
+                  </button>
+                </a>
+              </div>
+              <div
+                  class="d-flex justify-content-left ml-3 align-items-center"
+                  style="margin-top: 30px">
+                <h2 *ngIf="isSubmitted" class="p-2" style="color: #d4312fff">{{ result }}</h2>
+              </div>
             </form>
-            <a style="cursor: pointer;" (click)="goToNextQuestion()">
-              <button *ngIf="counter < questionList.length - 1 && showNext">Next Question ==></button>
-            </a>
           </div>
-
         </span>
       </div>
     </div>
+    <div
+        id="results"
+        *ngIf="resultsButtonClicked"
+        class="container mt-3 text-center">
+      <h1>Congratulations!</h1>
+      <h3>
+        You got {{ rightAnswers }}/{{ rightAnswers + wrongAnswers }} ({{
+        score.toFixed(0)
+        }}%) correct
+      </h3>
+      <div class="">
+        <button class="btn btn-info" (click)="reloadPlayRoute()">
+          Take Another Quiz
+        </button>
+        |
+        <button class="btn btn-info" routerLink="/questions">
+          Go to Question Manager
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="d-flex justify-content-center align-items-end" style="margin-top: 30px;">
-    <h2 class="p-2" style="color: #d4312fff">{{result}}</h2>
-  </div>
+
 </div>
