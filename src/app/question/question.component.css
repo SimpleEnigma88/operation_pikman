@@ -10,3 +10,12 @@
   justify-content: center;
   border: 2px;
 }
+
+.button-group {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  margin: 0 10px;
+}

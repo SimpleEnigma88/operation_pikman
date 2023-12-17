@@ -16,13 +16,11 @@ export class StatsService {
   incrementCorrect() {
     this.testRight++;
     this.correctAnswers.next(this.testRight);
-    console.log("Stats Serv: ", this.testRight);
   }
 
   incrementWrong() {
     this.testWrong++;
     this.wrongAnswers.next(this.testWrong);
-    console.log("Stats Serv: ", this.testWrong);
   }
 
   calculateScore() {
