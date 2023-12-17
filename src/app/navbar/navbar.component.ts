@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { StatsService } from '../shared/services/stats.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private statService: StatsService) { }
 
   reloadPlayRoute() {
+    this.statService.resetStats();
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/play']);
     });

@@ -30,7 +30,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   score: number;
   resultsButtonClicked: boolean = false;
   isRadioButtonSelected = false;
-  numQuestions: number = 10;
+  numQuestions: number = 2;
 
   constructor(
     private triviaService: TriviaService,

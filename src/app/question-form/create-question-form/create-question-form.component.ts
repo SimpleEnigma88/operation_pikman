@@ -37,7 +37,6 @@ export class CreateQuestionFormComponent implements OnInit, OnDestroy {
   };
 
   onQuestFormSubmit(formObj: NgForm) {
-    this.questFormSubmitted = true;
     this.questDetails.question = formObj.value.question;
     this.questDetails.answer = formObj.value.answer;
     this.questDetails.title = formObj.value.title;
@@ -47,5 +46,6 @@ export class CreateQuestionFormComponent implements OnInit, OnDestroy {
       this.questDetails.answer
     );
     formObj.reset();
+    this.questFormSubmitted = true;
   }
 }
