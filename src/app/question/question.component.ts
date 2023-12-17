@@ -8,7 +8,7 @@ import { StatsService } from '../shared/services/stats.service';
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
-  styleUrls: ['./question.component.css']
+  styleUrls: ['./question.component.css'],
 })
 export class QuestionComponent implements OnInit, OnDestroy {
   questionList: any[] = [];
