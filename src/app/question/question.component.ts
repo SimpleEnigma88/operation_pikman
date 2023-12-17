@@ -4,6 +4,7 @@ import { TriviaService } from '../shared/services/trivia.service';
 import { Subscription } from 'rxjs';
 import { QuestionResultService } from '../shared/services/result.service';
 import { StatsService } from '../shared/services/stats.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -33,7 +34,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
   constructor(
     private triviaService: TriviaService,
     private questionResult: QuestionResultService,
-    private statsService: StatsService) { }
+    private statsService: StatsService,
+    private router: Router) { }
 
 
   onRadioButtonSelect() {
@@ -53,6 +55,14 @@ export class QuestionComponent implements OnInit, OnDestroy {
     this.questionResult.userIsRight.next(null);
     this.isSubmitted = false;
     this.isRadioButtonSelected = false;
+  }
+
+  reloadPlayRoute() {
+    this.result = "";
+    this.statsService.resetStats();
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/play']);
+    });
   }
 
   goToResultsPage() {
