@@ -58,6 +58,7 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.questionSub.unsubscribe();
+    this.questionList = [];
   }
 
   getPosterUrl(title: string) {
@@ -85,7 +86,11 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
       formObj.value.answer,
     );
     this.triviaService.getQuestions();
+
     formObj.reset();
     this.displayEditForm = false;
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/play']);
+    });
   }
 }

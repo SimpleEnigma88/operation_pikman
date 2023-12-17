@@ -58,7 +58,7 @@ export class TriviaService {
     return this.http.post(this.dbURL, { movieTitle, question, answer })
       .subscribe({
         next: (res) => {
-          console.log("res: ", res);
+          this.getQuestions();
           this.snackBar.open("Question was added!", 'Close', {
             duration: 3500,
           });
@@ -82,6 +82,7 @@ export class TriviaService {
         next: (res) => {
           console.log("res: ", res);
           if (res) {
+            this.getQuestions();
             this.snackBar.open("Question was updated!", 'Close', {
               duration: 3500,
             });
@@ -99,6 +100,7 @@ export class TriviaService {
     return this.http.delete(`${this.dbURL}/questions/${id}`)
       .subscribe({
         next: (res) => {
+          this.getQuestions();
           this.snackBar.open("Question was deleted!", 'Close', {
             duration: 3500,
           });
