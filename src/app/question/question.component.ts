@@ -30,6 +30,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   score: number;
   resultsButtonClicked: boolean = false;
   isRadioButtonSelected = false;
+  numQuestions: number = 10;
 
   constructor(
     private triviaService: TriviaService,
@@ -93,7 +94,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.triviaService.getQuestions(3);
+    this.triviaService.getQuestions(this.numQuestions);
     this.Tsub = this.triviaService.questionSub.subscribe(
       (res) => {
         if (res) {
