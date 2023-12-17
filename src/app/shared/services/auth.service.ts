@@ -147,7 +147,7 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      this.router.navigate(['/home']); // May need to change this, depending on component name
+      this.router.navigate(['/play']); // May need to change this, depending on component name
     }
 
   }
@@ -155,7 +155,6 @@ export class AuthService {
   logout() {
     this.user.next(null);
     localStorage.removeItem('userData');
-    localStorage.removeItem('profileData');
     this.router.navigate(['/landing-page']); // May need to change this, depending on component name
   }
 }
