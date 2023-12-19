@@ -69,8 +69,6 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
     );
   }
 
-
-
   onEditFormSubmit(formObj: NgForm) {
     console.log("onEditFormSubmit")
     console.log(formObj.value);
@@ -89,6 +87,14 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
 
     formObj.reset();
     this.displayEditForm = false;
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/play']);
+    });
+  }
+
+  onDeleteQuestion(id: string) {
+    this.triviaService.deleteQuestion(this.selectedCard.id);
+    this.triviaService.getQuestions();
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/play']);
     });
