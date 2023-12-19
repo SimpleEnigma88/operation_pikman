@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TriviaService } from '../../shared/services/trivia.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-edit-questions',
   templateUrl: './edit-questions.component.html',
@@ -14,8 +16,16 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
   questionSub: Subscription;
   Msub: Subscription;
   picUrl = "";
+  selectedCard: any = {
+    id: "",
+    title: "",
+    question: "",
+    answer: "",
+  };
+  displayEditForm = false;
 
-  constructor(private triviaService: TriviaService) {
+  constructor(private triviaService: TriviaService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,8 +37,28 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
     });
   }
 
+  cancelEdit(templateFormRef: NgForm) {
+    console.log("cancel edit");
+    templateFormRef.reset();
+    this.selectedCard = {
+      id: "",
+      title: "",
+      question: "",
+      answer: "",
+    };
+    this.displayEditForm = false;
+  }
+
+  onCardClick(id: string, question: any) {
+    this.selectedCard.id = id;
+    this.selectedCard.movieTitle = question.movieTitle;
+    this.selectedCard.question = question.question;
+    this.selectedCard.answer = question.answer;
+    this.displayEditForm = true;
+  }
   ngOnDestroy(): void {
     this.questionSub.unsubscribe();
+    this.questionList = [];
   }
 
   getPosterUrl(title: string) {
@@ -39,18 +69,34 @@ export class EditQuestionsComponent implements OnInit, OnDestroy {
     );
   }
 
-  editFormSubmitted = false;
-  editDetails = {
-    title: " ",
-    question: " ",
-    answer: " ",
-  };
-
   onEditFormSubmit(formObj: NgForm) {
-    this.editFormSubmitted = true;
-    this.editDetails.title = formObj.value.title;
-    this.editDetails.question = formObj.value.question;
-    this.editDetails.answer = formObj.value.answer;
+    console.log("onEditFormSubmit")
+    console.log(formObj.value);
+    console.log(formObj.value.movieTitle);
+    console.log(formObj.value.question);
+    console.log(formObj.value.answer);
+    console.log(formObj.value.cardId);
+
+    this.triviaService.updateQuestion(
+      formObj.value.cardId,
+      formObj.value.movieTitle,
+      formObj.value.question,
+      formObj.value.answer,
+    );
+    this.triviaService.getQuestions();
+
     formObj.reset();
+    this.displayEditForm = false;
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/play']);
+    });
+  }
+
+  onDeleteQuestion(id: string) {
+    this.triviaService.deleteQuestion(this.selectedCard.id);
+    this.triviaService.getQuestions();
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/play']);
+    });
   }
 }

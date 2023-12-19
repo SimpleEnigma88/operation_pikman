@@ -1,12 +1,15 @@
 <!-- Created Questions Display -->
 <div class="container">
-  <div class="row mt-4" *ngIf="!editFormSubmitted">
+  <div class="row mt-4" *ngIf="!displayEditForm">
     <div class="col-xs-12">
+      <h1>{{ questionList.length }} Total Questions</h1>
       <div
+        style="cursor: pointer"
         class="questionImported"
         *ngFor="let question of questionList; let i = index"
+        (click)="onCardClick(question.id, question)"
       >
-        <div class="card" id="{{ i }}" style="padding: 5px">
+        <div class="card" id="{{ i }}" style="padding: 5px; margin-bottom: 5px">
           <h2>Movie Title: {{ question.movieTitle }}</h2>
           <h3>Question: {{ question.question }}</h3>
           <h3>Answer: {{ question.answer }}</h3>
@@ -18,7 +21,7 @@
 </div>
 
 <div class="container">
-  <div class="row" *ngIf="editFormSubmitted">
+  <div class="row" *ngIf="displayEditForm">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form
         (ngSubmit)="onEditFormSubmit(templateFormRef)"
@@ -26,20 +29,25 @@
       >
         <div id="edit-title">
           <div class="form-group">
+            <input
+              type="hidden"
+              [(ngModel)]="selectedCard.id"
+              name="cardId"
+              id="cardId"
+            />
             <label for="edit-question">Change movie title:</label>
             <input
               type="text"
-              id="edit-title"
+              id="movieTitle"
               class="form-control"
+              [(ngModel)]="selectedCard.movieTitle"
               ngModel
               #editTitleRef
-              name="edit-title"
+              name="movieTitle"
             />
             <span
-              class="help-block text-danger"
-              *ngIf="!editQuestionRef.valid && editQuestionRef.touched"
-              >Please enter a valid question!</span
-            >
+                class="help-block text-danger"
+                *ngIf="!editQuestionRef.valid && editQuestionRef.touched">Please enter a valid title!</span>
           </div>
         </div>
         <div id="edit-quest-data">
@@ -47,11 +55,12 @@
             <label for="edit-question">Edit your question:</label>
             <input
               type="text"
-              id="edit-question"
+              id="question"
               class="form-control"
+              [(ngModel)]="selectedCard.question"
               ngModel
               #editQuestionRef
-              name="edit-question"
+              name="question"
             />
             <span
               class="help-block text-danger"
@@ -64,11 +73,12 @@
           <div class="form-group">
             <label for="edit-answer">Change correct answer:</label>
             <select
-              id="edit-answer-data"
+              id="answer"
               class="form-control"
+              [(ngModel)]="selectedCard.answer"
               ngModel
               #editAnswerRef
-              name="edit-answer"
+              name="answer"
             >
               <option value="true">True</option>
               <option value="false">False</option>
@@ -86,6 +96,21 @@
           [disabled]="!templateFormRef.valid"
         >
           Resubmit
+        </button>
+        <span> | </span>
+        <button
+          class="btn btn-secondary"
+          type="button"
+          (click)="cancelEdit(templateFormRef)"
+        >
+          Cancel
+        </button>
+        <span> | </span>
+        <button
+            class="btn btn-danger"
+            type="button"
+            (click)="onDeleteQuestion(templateFormRef)">
+          Delete
         </button>
       </form>
     </div>

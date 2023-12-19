@@ -25,43 +25,47 @@
                 id="form"
                 (submit)="submitAnswer(truefalseref)">
               <div class="form-group">
-                <label>Select correct answer</label>
+                <label>Select your answer</label>
                 <br />
-                <input
-                    class="form-check-input"
-                    type="radio"
-                    id="true"
-                    name="answer"
-                    value="true"
-                    ngModel
-                    (change)="onRadioButtonSelect()" />
-                <label class="form-check-label" for="true"> True</label>
-                <br />
-                <input
-                    class="form-check-input"
-                    type="radio"
-                    id="true"
-                    name="answer"
-                    value="false"
-                    ngModel
-                    (change)="onRadioButtonSelect()" />
-                <label class="form-check-label" for="false">False</label>
+                <div class="radiobtn">
+                  <input
+                      class="form-check-input"
+                      type="radio"
+                      id="true"
+                      name="answer"
+                      value="true"
+                      ngModel
+                      (change)="onRadioButtonSelect()" />
+                  <label class="form-check-label label" for="true"> True</label>
+                </div>
+                <!-- <br /> -->
+                <div class="radiobtn">
+                  <input
+                      class="form-check-input"
+                      type="radio"
+                      id="true"
+                      name="answer"
+                      value="false"
+                      ngModel
+                      (change)="onRadioButtonSelect()" />
+                  <label class="form-check-label label" for="false">False</label>
+                </div>
               </div>
               <div class="button-group">
                 <button
-                    class="btn btn-primary"
+                    class="button btn btn-primary"
                     style="background-color: #3da9efff"
                     type="submit"
                     [disabled]="!isRadioButtonSelected || isSubmitted">
                   Submit answer
                 </button>
-                <span class="separator"> | </span>
+                <span class="separator"></span>
                 <a style="cursor: pointer" (click)="goToNextQuestion()">
                   <button
-                      class="btn btn-success"
+                      class="nextbutton btn btn-success"
                       style="background-color: #3da9efff"
                       *ngIf="counter < questionList.length - 1 && showNext">
-                    Next Question ==>
+                    Next Question
                   </button>
                 </a>
                 <a
@@ -69,7 +73,7 @@
                     *ngIf="counter >= questionList.length - 1 && showNext"
                     (click)="goToResultsPage()">
                   <button
-                      class="btn btn-success"
+                      class="button btn btn-success"
                       style="background-color: green">
                     See Results!
                   </button>
@@ -106,5 +110,4 @@
       </div>
     </div>
   </div>
-
 </div>

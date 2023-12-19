@@ -37,14 +37,15 @@ export class CreateQuestionFormComponent implements OnInit, OnDestroy {
   };
 
   onQuestFormSubmit(formObj: NgForm) {
-    this.questFormSubmitted = true;
     this.questDetails.question = formObj.value.question;
     this.questDetails.answer = formObj.value.answer;
     this.questDetails.title = formObj.value.title;
     this.triviaService.addQuestionToDB(
       this.questDetails.title,
       this.questDetails.question,
-      this.questDetails.answer);
+      this.questDetails.answer
+    );
     formObj.reset();
+    this.questFormSubmitted = true;
   }
 }

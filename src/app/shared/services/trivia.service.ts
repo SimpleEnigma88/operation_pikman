@@ -58,16 +58,20 @@ export class TriviaService {
     return this.http.post(this.dbURL, { movieTitle, question, answer })
       .subscribe({
         next: (res) => {
+          this.getQuestions();
           this.snackBar.open("Question was added!", 'Close', {
             duration: 3500,
           });
         },
         error: (err) => {
+          console.log("err: ", err);
           this.snackBar.open("There was an error adding your trivia question!", 'Close', {
             duration: 3500,
           });
         },
         complete: () => {
+          console.log("complete");
+
         }
       });
   }
@@ -76,9 +80,13 @@ export class TriviaService {
     return this.http.put(`${this.dbURL}/questions/${id}`, { movieTitle, question, answer })
       .subscribe({
         next: (res) => {
-          this.snackBar.open("Question was updated!", 'Close', {
-            duration: 3500,
-          });
+          console.log("res: ", res);
+          if (res) {
+            this.getQuestions();
+            this.snackBar.open("Question was updated!", 'Close', {
+              duration: 3500,
+            });
+          }
         },
         error: (err) => {
           this.snackBar.open("There was an error updating your trivia question!", 'Close', {
@@ -92,6 +100,7 @@ export class TriviaService {
     return this.http.delete(`${this.dbURL}/questions/${id}`)
       .subscribe({
         next: (res) => {
+          this.getQuestions();
           this.snackBar.open("Question was deleted!", 'Close', {
             duration: 3500,
           });
