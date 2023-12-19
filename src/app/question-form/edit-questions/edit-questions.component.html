@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row mt-4" *ngIf="!displayEditForm">
     <div class="col-xs-12">
-      <h1>{{ questionList.length }}</h1>
+      <h1>{{ questionList.length }} </h1>
       <div
           class="questionImported"
           *ngFor="let question of questionList; let i = index"
@@ -38,7 +38,7 @@
                 name="movieTitle" />
             <span
                 class="help-block text-danger"
-                *ngIf="!editQuestionRef.valid && editQuestionRef.touched">Please enter a valid question!</span>
+                *ngIf="!editQuestionRef.valid && editQuestionRef.touched">Please enter a valid title!</span>
           </div>
         </div>
         <div id="edit-quest-data">
@@ -87,6 +87,13 @@
             type="button"
             (click)="cancelEdit(templateFormRef)">
           Cancel
+        </button>
+        <span> | </span>
+        <button
+            class="btn btn-danger"
+            type="button"
+            (click)="onDeleteQuestion(templateFormRef)">
+          Delete
         </button>
       </form>
     </div>
