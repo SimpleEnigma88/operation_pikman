@@ -1,3 +1,11 @@
+.label {
+  padding-left: 4px;
+}
+
+.radiobtn {
+  padding: 4px;
+}
+
 .header {
   margin-top: 1.5rem;
 }
@@ -18,4 +26,64 @@
 
 .separator {
   margin: 0 10px;
+}
+
+input[type="radio"] {
+  border-color: #c183b5ff;
+  cursor: pointer;
+}
+
+input[type="radio"]:hover {
+  transform: scale(1.05);
+}
+
+input[type="radio"]:checked {
+  background-color: #c183b5ff;
+}
+
+.button {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #fb934aff;
+  transform: scale(1.05);
+  transition: 0.4s ease;
+}
+
+.nextbutton {
+  background-color: #5ca1e1;
+  border: none;
+  color: #fff;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.nextbutton{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.nextbutton:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;  
+  top: 5px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.nextbutton:hover{
+  padding-right: 24px;
+  padding-left:8px;
+}
+
+.nextbutton:hover:after {
+  opacity: 1;
+  right: 10px;
 }
