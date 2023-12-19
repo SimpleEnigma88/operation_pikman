@@ -120,6 +120,7 @@ export class AuthService {
       token,
       expirationDate,
     ));
+    this.router.navigate(['/play']);
   };
 
   autoLogin() {
